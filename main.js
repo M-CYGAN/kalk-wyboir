@@ -1,32 +1,22 @@
 const btnNext = document.querySelector('#next')
 const btnCalc = document.querySelector('#calc')
+let list = [];
+let totalVote = 0;
 
-const array = [];
-
-btnNext.addEventListener('click', function (e){
-    e.preventDefault();
-    
-const electoralName = document.querySelector('electoralName')
-const isCoalition = document.querySelector('isCoalition')
-const numberOfVotes = document.querySelector('numberOfVotes')
+btnNext.addEventListener('click', evt =>{
+    evt.preventDefault();
+    const electoralName = document.querySelector('#electoralName')
+const isCoalition = document.querySelector('#isCoalition')
+const numberOfVotes = document.querySelector('#numberOfVotes')
 const electoralList = document.querySelector('#electoralList')
 const results = document.querySelector('#results')
 
-if((isCoalition.value = false)) {
-    console.log('5%')
-} else if ((isCoalition.value = true)) {
-    console.log('8%')
-}
-
-const object = {
-    electoralName: electoralName.value,
-    isCoalition: isCoalition.value,
-    numberOfVotes: numberOfVotes.value,
-};
-
-//electoralList.innerHTML += `<li><b>${electoralName}</b>,${}, ilość głosów: ${numberOfVotes}</li>`
-
-array.push(object);
+    const electoral = {
+        name: electoralName.value,
+        coalition: isCoalition.checked ? isCoalition.value: 8,
+        votes: numberOfVotes.value
+    };
+    totalVote = +totalVote + +electoral.votes
+    list.push(electoral)
+    electoralList.innerHTML += `<li><b>${electoralName.value}</b>,${electoral.coalition ? "" : "nie "}jest koalicją , ilość głosów: <b>${numberOfVotes.value}</b></li>`;
 })
-
-
